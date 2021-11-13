@@ -3,8 +3,11 @@ package com.search.sequence.commutebuddy.controller;
 
 import com.search.sequence.commutebuddy.model.User;
 import com.search.sequence.commutebuddy.model.UserDTO;
+import com.search.sequence.commutebuddy.model.UserDTO;
 import com.search.sequence.commutebuddy.service.UserService;
 import com.search.sequence.commutebuddy.utils.ApiResponse;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +30,7 @@ public class UserController {
 		//@Autowired
 		//private ConfigUtility configUtil;
 		
-	    @GetMapping("/byid/{userId}")
+	    @GetMapping("/{userId}")
 	    public ApiResponse<User> getUserById(@PathVariable int userId) {
 	    	
 	    	//log.info("List of allowed groups: --------------------------- " + configUtil.getProperty("allowed.groups"));
@@ -35,27 +38,24 @@ public class UserController {
 	        return new ApiResponse<User>(HttpStatus.OK.value(), "User Information!", "mali", user);
 	    }
 		
-		@GetMapping("/all") 
-		public ApiResponse<String> getBasket() { 
+		@GetMapping
+		public ApiResponse<List<User>> getAllUser() { 
+			
+			List<User> userList = userService.getAllUsers();
 			
 		
-			return new ApiResponse<String>(HttpStatus.OK.value(), "Fetched successfull", "mali", "All user is under progress"); 
+			return new ApiResponse<List<User>>(HttpStatus.OK.value(), "Fetched successfull", "mali", userList); 
 		}
 		
-		@RequestMapping(value = "/createuser", method = RequestMethod.POST) 
+		//@RequestMapping(value = "/", method = RequestMethod.POST) 
+		@PostMapping
 		public ApiResponse<String> createuser(@RequestBody UserDTO userDTO) { 
 			
-			log.info("UserDTO: " + userDTO.getFirstName());
+			log.info("UserDTO: " + userDTO.getUser().getFirstName());
 
-
-			try {
-				
+			userService.ceateUser(userDTO);
 	        log.info("Account is ready to be created: " + userDTO.toString());
-				
-			} catch (Exception  e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
 			
 			return new ApiResponse<String>(HttpStatus.OK.value(), "Fetch successfully", "mali", "User account created successfully");
 		}	

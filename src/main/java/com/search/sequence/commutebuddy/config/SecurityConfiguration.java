@@ -75,9 +75,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.httpBasic() //httpBasic allow to send the credential to http header
 		.and().csrf().disable() // csrf disabled will be helpful if someone is using your service without browser client
 		.authorizeRequests() //only following giving authorize users are allowed to use services
-		.antMatchers("/submissions/admin").hasAuthority("ADMIN")
-			.antMatchers("/submissions/user").hasAnyAuthority("ADMIN", "USER")
-			.antMatchers("/user/**").hasAuthority("ADMIN")
+		//.antMatchers("/submissions/admin").hasAuthority("ADMIN")
+			//.antMatchers("/submissions/user").hasAnyAuthority("ADMIN", "USER")
+			.antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
 			.antMatchers("/configuration/**", "/swagger*", "/webjars/**").hasAnyAuthority("ADMIN", "USER")
 			//.antMatchers("/").permitAll()
 			.anyRequest().authenticated() //everything needs to be authenticated

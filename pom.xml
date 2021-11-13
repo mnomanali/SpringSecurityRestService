@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.search.sequence.commutebuddy</groupId>
   <artifactId>CommuteBuddyServices</artifactId>
-  <packaging>war</packaging>
+  <!--  packaging>war</packaging -->
   
   <parent>
         <groupId>org.springframework.boot</groupId>
@@ -13,6 +13,7 @@
 	<properties>
 		<jersey-version>2.27</jersey-version>
 		<swagger-version>2.6.1</swagger-version>
+		<java.version>11</java.version>
 	</properties>
 
     <dependencies>
@@ -40,11 +41,11 @@
         	<scope>compile</scope>
         </dependency>
         <!-- this is added to run the application on linux tomcat server  -->      
-        <dependency>
+        <!-- dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency -->
         <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-security</artifactId>
@@ -55,11 +56,16 @@
 			<version>12.2.0.1</version>
 		</dependency -->
 			<!-- API, java.xml.bind module -->
-			 <dependency>
+			 <!-- dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <scope>runtime</scope>
-            </dependency>
+            </dependency -->
+            <dependency>
+			    <groupId>mysql</groupId>
+			    <artifactId>mysql-connector-java</artifactId>
+			    <scope>runtime</scope>
+			</dependency>
 			<dependency>
 			    <groupId>jakarta.xml.bind</groupId>
 			    <artifactId>jakarta.xml.bind-api</artifactId>
@@ -67,21 +73,21 @@
 			</dependency>
 			
 			<!-- Runtime, com.sun.xml.bind module -->
-			<dependency>
+			<!-- dependency>
 			    <groupId>org.glassfish.jaxb</groupId>
 			    <artifactId>jaxb-runtime</artifactId>
 			    <version>2.3.2</version>
-			</dependency>
+			</dependency -->
 
 			<!-- Gson  -->
-			<dependency>
+			<!-- dependency>
 				<groupId>com.google.code.gson</groupId>
 			    <artifactId>gson</artifactId>
 			    <version>2.8.5</version>
-			</dependency>
+			</dependency -->
 			
 			<!-- Jersey -->
-	        <dependency>
+	        <!-- dependency>
 	            <groupId>org.glassfish.jersey.core</groupId>
 	            <artifactId>jersey-client</artifactId>
 	            <version>${jersey-version}</version>
@@ -95,7 +101,7 @@
 	            <groupId>org.glassfish.jersey.ext</groupId>
 	            <artifactId>jersey-bean-validation</artifactId>
 	            <version>${jersey-version}</version>
-	        </dependency>
+	        </dependency -->
 	        <!-- End Jersey -->
     </dependencies>
     
@@ -108,33 +114,5 @@
             </plugin>
         </plugins>
     </build>
- 
- <!-- dependencies> 
-  <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>    
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <scope>runtime</scope>
-</dependency>
-<dependency>
-    <groupId>org.thymeleaf.extras</groupId>
-    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-</dependency>
-  </dependencies -->
   
 </project>

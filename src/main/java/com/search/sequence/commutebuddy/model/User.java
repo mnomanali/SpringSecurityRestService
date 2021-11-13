@@ -18,6 +18,7 @@ public class User {
 	private String gender;
 	private Date accountCreated;
 	private Date accountUpdated;
+	private boolean active;
 	private String email; 
 	private boolean sendOffers;
 	private int userRating;
@@ -27,14 +28,15 @@ public class User {
 		  values.put("firstName", firstName);
 		  values.put("lastName", lastName);
 		  values.put("address1", address1);
-		  values.put("address1", address2);
-		  values.put("address1", province);
-		  values.put("address1", city);
+		  values.put("address2", address2);
+		  values.put("province", province);
+		  values.put("city", city);
 		  values.put("telephone1", telephone1);
 		  values.put("telephone2", telephone2);
 		  values.put("gender", gender);
 		  values.put("accountCreated", accountCreated);
 		  values.put("accountUpdated", accountUpdated);
+		  values.put("active", active);
 		  values.put("email", email);
 		  values.put("sendOffers", sendOffers);
 		  values.put("userRating", userRating);
@@ -130,6 +132,14 @@ public class User {
 	}
 	public void setUserRating(int userRating) {
 		this.userRating = userRating;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }
